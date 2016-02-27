@@ -1,0 +1,24 @@
+{
+  "name": "10d6",
+  "version": "0.0.0",
+  "authors": [
+    "Amr Gaber <amrtgaber@gmail.com>"
+  ],
+  "description": "Dice roller",
+  "main": "app.js",
+  "license": "ISC",
+  "homepage": "10d6.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.0",
+    "angular-route": "^1.5.0"
+  }
+}
