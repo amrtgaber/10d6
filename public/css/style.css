@@ -1,0 +1,8 @@
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  text-align: center;
+}
+.container {
+  max-width: 680px;
+  width: auto;
+}
