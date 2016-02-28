@@ -8,7 +8,18 @@ angular.module("10d6")
         index: '=',
         remove: '&'
       },
-      controller: function($scope) {},
+      controller: function($scope) {
+        $scope.roll = function() {
+          $scope.die.roll();
+          $scope.$emit('stats');
+        };
+
+        $scope.setSides = function(sides) {
+          $scope.die.setSides(sides);
+          $scope.newDie = {};
+          $scope.$emit('stats');
+        };
+      },
       link: function(scope, element, attrs) {}
     };
   });

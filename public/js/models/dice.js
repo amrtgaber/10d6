@@ -19,4 +19,5 @@ Dice.prototype.getSides = function() {
 
 Dice.prototype.setSides = function(sides) {
   this.sides = sides;
+  this.roll();
 };
