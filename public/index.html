@@ -19,8 +19,10 @@
       <h2>(alpha version)</h2>
       <h2>Dice Roller</h2>
 
-      <div ng-repeat="die in dice track by $index">
-        <dice die="die" index="$index" remove="removeDice(index)"></dice>
+      <div class="row">
+        <div class="col-md-4 col-sm-12" ng-repeat="die in dice track by $index">
+          <dice die="die" index="$index" remove="removeDice(index)"></dice>
+        </div>
       </div>
     </div>
 

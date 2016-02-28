@@ -3,6 +3,10 @@ body {
   text-align: center;
 }
 
+.center-container {
+  width: 60%;
+}
+
 .left-container {
   position: fixed;
   left: 0;
