@@ -12,28 +12,60 @@ body {
   left: 0;
   bottom: 0;
   width: 20%;
+  text-align: left;
 }
 
 .right-container {
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 20%;
+  width: 30%;
+  text-algin: right;
 }
 
-.menu-button-wrapper {
+.right-container > .row {
   margin: 10px;
 }
 
-input {
+input[type="number"] {
   border: 0;
   border-bottom: 1px solid black;
+  margin: 5px;
 }
 
-input[type="number"] {
+input[type="number"]:focus {
+  outline: 0;
+}
+
+.dice-sides-input {
+  width: 40px;
+}
+
+.add-dice-sides,
+.add-dice-number {
   width: 60px;
 }
 
+.dice-result {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.stat-result {
+  font-size: 1.5em;
+}
+
+/* desktops and laptops */
+@media (min-width: 768px) {
+
+}
+
+/* tablets */
+@media (max-width: 768px) {
+
+}
+
+/* phones */
 @media (max-width: 480px) {
   .right-container {
     width: 30%;

@@ -21,54 +21,58 @@
 
       <div class="row">
         <div class="col-md-4 col-sm-12" ng-repeat="die in dice track by $index">
-          <dice die="die" index="$index" remove="removeDice(index)"></dice>
+          <dice die="die" index="$index" remove="removeDice($index)"></dice>
         </div>
       </div>
     </div>
 
     <div class="container left-container">
-      <h3>total dice:
-        {{dice.length}}</h3>
+      <h3>total dice <span class="stat-result">{{dice.length}}</span></h3>
 
       <div>
-        <h4>sum:
-          {{sum}}</h4>
+        <h4>sum <span class="stat-result">{{sum}}</span></h4>
       </div>
 
       <div>
-        <h4>highest:
-          {{highest}}</h4>
+        <h4>highest <span class="stat-result">{{highest}}</span></h4>
       </div>
 
       <div>
-        <h4>lowest:
-          {{lowest}}</h4>
+        <h4>lowest <span class="stat-result">{{lowest}}</span></h4>
       </div>
     </div>
 
     <div class="container right-container">
-      <div class="menu-button-wrapper">
-        <button type="button" id="remove-all-button" class="btn btn-sm btn-danger" ng-click="removeAllDice()">Remove all</button>
+      <div class="row">
+        <div class="col-xs 12 pull-right">
+          <button type="button" class="btn btn-sm btn-danger" ng-click="removeAllDice()">Remove all</button>
+        </div>
       </div>
 
-      <div class="menu-button-wrapper">
-        <form name="addMultiDiceForm" ng-submit="addMultiDiceForm.$valid && addMultiDice(multiDice.number, multiDice.sides)" novalidate>
-          <input type="number" id="add-multi-dice-number" min="1" ng-model="multiDice.number" pattern="\d*" placeholder="number" required>
-          d
-          <input type="number" id="add-multi-dice-sides" min="2" ng-model="multiDice.sides" pattern="\d*" placeholder="sides" required>
-          <button type="submit" id="add-multi-dice-button" class="btn btn-sm btn-info">Add multiple</button>
-        </form>
+      <div class="row">
+        <div class="col-xs 12 pull-right">
+          <form class="add-multi-dice-form" name="addMultiDiceForm" ng-submit="addMultiDiceForm.$valid && addMultiDice(multiDice.number, multiDice.sides)" novalidate>
+            <input type="number" class="add-dice-number" min="1" ng-model="multiDice.number" pattern="\d*" placeholder="number" required>
+            <input type="number" class="add-dice-sides" min="2" ng-model="multiDice.sides" pattern="\d*" placeholder="sides" required>
+            <button type="submit" class="btn btn-sm btn-info pull-right">Add multiple</button>
+          </form>
+        </div>
       </div>
 
-      <div class="menu-button-wrapper">
-        <form name="addSingleDiceForm" ng-submit="addSingleDiceForm.$valid && addSingleDice(singleDice.sides)" novalidate>
-          <input type="number" id="add-single-dice-sides" min="2" ng-model="singleDice.sides" pattern="\d*" placeholder="sides" required>
-          <button type="submit" id="add-single-dice-button" class="btn btn-sm btn-info">Add single</button>
-        </form>
+
+      <div class="row">
+        <div class="col-xs 12 pull-right">
+          <form class="add-single-dice-form" name="addSingleDiceForm" ng-submit="addSingleDiceForm.$valid && addSingleDice(singleDice.sides)" novalidate>
+            <input type="number" class="add-dice-sides" min="2" ng-model="singleDice.sides" pattern="\d*" placeholder="sides" required>
+            <button type="submit" class="btn btn-sm btn-info pull-right">Add single</button>
+          </form>
+        </div>
       </div>
 
-      <div class="menu-button-wrapper">
-        <button type="button" id="roll-all-button" class="btn btn-sm btn-success" ng-click="rollAll()">Roll all</button>
+      <div class="row">
+        <div class="col-xs 12 pull-right">
+          <button type="button" class="btn btn-sm btn-success" ng-click="rollAll()">Roll all</button>
+        </div>
       </div>
     </div>
 

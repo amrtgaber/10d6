@@ -1,10 +1,9 @@
-<div>sides:
-  {{die.getSides()}}</div>
-<form name="setSidesForm" ng-submit="setSidesForm.$valid && setSides(newDie.sides)" novalidate>
-  <input type="number" id="set-dice-sides" min="2" ng-model="newDie.sides" pattern="\d*" placeholder="sides" required>
-  <button type="submit" id="set-dice-sides-button" class="btn btn-sm">Set sides</button>
-</form>
-<div>result:
-  {{die.getResult()}}</div>
+<div>
+  <input type="number" class="dice-sides-input" min="2" ng-model="die.sides" pattern="\d*" required>
+  sides
+</div>
+
+<div class="dice-result">{{die.getResult()}}</div>
+
 <button type="button" class="btn btn-success" ng-click="roll()">Roll</button>
 <button type="button" class="btn btn-danger" ng-click="remove({index: index})">Remove</button>
