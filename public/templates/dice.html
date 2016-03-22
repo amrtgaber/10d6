@@ -1,10 +1,8 @@
-<div class="dice-wrapper" ng-click="roll()">
+<div class="dice-inner-wrapper" ng-click="roll()">
   <div class="dice-result">{{die.getResult()}}</div>
   <hr>
   <div class="dice-sides">
     <!--<input type="number" class="dice-sides-input" min="2" ng-model="die.sides" pattern="\d*" required>-->
     {{die.sides}}
   </div>
-
-  <!--<button type="button" class="btn btn-danger" ng-click="remove({index: index})">Remove</button>-->
 </div>
