@@ -4,7 +4,7 @@ angular.module('10d6')
     $scope.dice.push(new Dice(6));
 
     $scope.testSwipe = () => {
-      console.log('swiped');
+      alert('swiped');
     }
 
     $scope.addSingleDice = function(sides) {
