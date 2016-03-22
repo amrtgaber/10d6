@@ -1,3 +1,7 @@
+html {
+  font-size: 14px;
+}
+
 body {
   font-family: "Roboto Condensed", sans-serif;
   text-align: center;
@@ -46,9 +50,29 @@ input[type="number"]:focus {
   width: 60px;
 }
 
+.dice-wrapper {
+  border: 3px solid #000;
+  border-radius: 5px;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 .dice-result {
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
+}
+
+.dice-sides {
+  color: #686868;
+  font-weight: 100;
+  padding: 0 5px;
+}
+
+hr {
+  border: 1px solid #686868;
+  margin: 0 20px;
 }
 
 .stat-result {

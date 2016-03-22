@@ -3,6 +3,10 @@ angular.module('10d6')
     $scope.dice = [];
     $scope.dice.push(new Dice(6));
 
+    $scope.testSwipe = () => {
+      console.log('swiped');
+    }
+
     $scope.addSingleDice = function(sides) {
       $scope.dice.push(new Dice(sides));
       $scope.singleDice = {}; // clear input field
