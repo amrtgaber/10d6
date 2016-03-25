@@ -2,14 +2,15 @@ angular.module('10d6')
   .controller('diceCtrl', function($scope) {
     $scope.dice = [];
     $scope.dice.push(new Dice(6));
+    $scope.showActions = false;
 
-    $scope.addSingleDice = function(sides) {
+    $scope.addSingleDice = sides => {
       $scope.dice.push(new Dice(sides));
       $scope.singleDice = {}; // clear input field
       $scope.$emit('stats');
     };
 
-    $scope.addMultiDice = function(number, sides) {
+    $scope.addMultiDice = (number, sides) => {
       for (var i = 0; i < number; i++) {
         $scope.dice.push(new Dice(sides));
       }
@@ -17,47 +18,39 @@ angular.module('10d6')
       $scope.$emit('stats');
     };
 
-    $scope.removeDice = function(index) {
+    $scope.removeDice = index => {
       $scope.dice.splice(index, 1);
       $scope.$emit('stats');
     };
 
-    $scope.removeAllDice = function(index) {
+    $scope.removeAllDice = index => {
       $scope.dice = [];
       $scope.$emit('stats');
     };
 
-    $scope.rollAll = function() {
-      $scope.dice.forEach(function(element) {
-        element.roll();
-      });
+    $scope.rollAll = () => {
+      $scope.dice.forEach( die => die.roll() );
       $scope.$emit('stats');
     };
 
-    $scope.takeSum = function() {
+    $scope.takeSum = () => {
       if ($scope.dice.length === 0) {
         $scope.sum = 0;
         return;
       } else {
         $scope.sum = $scope.dice
-          .map(function(die) {
-            return die.getResult();
-          })
-          .reduce(function(prev, curr) {
-            return prev + curr;
-          });
+          .map( die => die.getResult() )
+          .reduce( (prev, curr) => prev + curr );
       }
     };
 
-    $scope.takeHighest = function() {
+    $scope.takeHighest = () => {
       if ($scope.dice.length === 0) {
         $scope.highest = 0;
       } else {
         $scope.highest = $scope.dice
-          .map(function(die) {
-            return die.getResult();
-          })
-          .reduce(function(prev, curr) {
+          .map( die => die.getResult() )
+          .reduce( (prev, curr) => {
             if (prev > curr) {
               return prev;
             } else {
@@ -67,16 +60,14 @@ angular.module('10d6')
       }
     };
 
-    $scope.takeLowest = function() {
+    $scope.takeLowest = () => {
       if ($scope.dice.length === 0) {
         $scope.lowest = 0;
         return;
       } else {
         $scope.lowest = $scope.dice
-          .map(function(die) {
-            return die.getResult();
-          })
-          .reduce(function(prev, curr) {
+          .map( die => die.getResult() )
+          .reduce( (prev, curr) => {
             if (prev < curr) {
               return prev;
             } else {
@@ -85,6 +76,8 @@ angular.module('10d6')
           });
       }
     };
+
+    $scope.toggleShowActions = () => $scope.showActions = !$scope.showActions;
 
     $scope.$on('stats', $scope.takeSum);
     $scope.$on('stats', $scope.takeHighest);

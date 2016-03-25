@@ -7,6 +7,10 @@ body {
   text-align: center;
 }
 
+.actions-overlay {
+  opacity: 0.6;
+}
+
 .title {
   font-size: 2.5rem;
   background-color: #333;
@@ -19,29 +23,28 @@ body {
   width: 60%;
 }
 
-.left-container {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 20%;
-  text-align: left;
+.btn.show-actions {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
 }
 
-.right-container {
+.actions-container {
+  margin-bottom: 15px;
   position: fixed;
   right: 0;
   bottom: 0;
   width: 30%;
-  text-algin: right;
+  text-align: right;
 }
 
-.right-container > .row {
+.actions-wrapper > .row {
   margin: 10px;
 }
 
 input[type="number"] {
   border: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
   margin: 5px;
 }
 
@@ -94,10 +97,6 @@ input[type="number"]:focus {
 hr {
   border: 1px solid #686868;
   margin: 0 20px;
-}
-
-.stat-result {
-  font-size: 1.5em;
 }
 
 /* desktops and laptops */

@@ -7,7 +7,7 @@ angular.module("10d6")
         die: '='
       },
       controller: function($scope) {
-        $scope.setSides = function(sides) {
+        $scope.setSides = sides => {
           $scope.die.setSides(sides);
           $scope.newDie = {};
           $scope.$emit('stats');

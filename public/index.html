@@ -15,67 +15,6 @@
   </head>
 
   <body ng-controller="diceCtrl">
-    <h1 class="title">10d6</h1>
-    <div class="container center-container">
-      <h2>Dice Roller</h2>
-      <h4>(alpha version)</h4>
-
-      <div class="row">
-        <div class="col-xs-4 col-md-2 dice-wrapper" ng-repeat="die in dice">
-          <dice die="die" hm-swipe="removeDice(dice.indexOf(die))"></dice>
-        </div>
-      </div>
-    </div>
-
-    <div class="container left-container">
-      <h3>total dice <span class="stat-result">{{dice.length}}</span></h3>
-
-      <div>
-        <h4>sum <span class="stat-result">{{sum}}</span></h4>
-      </div>
-
-      <div>
-        <h4>highest <span class="stat-result">{{highest}}</span></h4>
-      </div>
-
-      <div>
-        <h4>lowest <span class="stat-result">{{lowest}}</span></h4>
-      </div>
-    </div>
-
-    <div class="container right-container">
-      <div class="row">
-        <div class="col-xs 12 pull-right">
-          <button type="button" class="btn btn-sm btn-danger" ng-click="removeAllDice()">Remove all</button>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs 12 pull-right">
-          <form class="add-multi-dice-form" name="addMultiDiceForm" ng-submit="addMultiDiceForm.$valid && addMultiDice(multiDice.number, multiDice.sides)" novalidate>
-            <input type="number" class="add-dice-number" min="1" ng-model="multiDice.number" pattern="\d*" placeholder="number" required>
-            <input type="number" class="add-dice-sides" min="2" ng-model="multiDice.sides" pattern="\d*" placeholder="sides" required>
-            <button type="submit" class="btn btn-sm btn-info pull-right">Add multiple</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs 12 pull-right">
-          <form class="add-single-dice-form" name="addSingleDiceForm" ng-submit="addSingleDiceForm.$valid && addSingleDice(singleDice.sides)" novalidate>
-            <input type="number" class="add-dice-sides" min="2" ng-model="singleDice.sides" pattern="\d*" placeholder="sides" required>
-            <button type="submit" class="btn btn-sm btn-info pull-right">Add single</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs 12 pull-right">
-          <button type="button" class="btn btn-sm btn-success" ng-click="rollAll()">Roll all</button>
-        </div>
-      </div>
-    </div>
-
     <!-- js -->
     <script src="bower_components/jquery/dist/jquery.js" type="text/javascript"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
@@ -89,6 +28,76 @@
     <script src="js/controllers/dice-ctrl.js" type="text/javascript"></script>
     <script src="js/directives/dice.js" type="text/javascript"></script>
 
+    <div  ng-class="{ 'actions-overlay': showActions }">
+      <h1 class="title">10d6</h1>
+
+      <div class="container center-container">
+        <h2>Dice Roller</h2>
+        <h4>(alpha version)</h4>
+
+        <div class="row text-left stats-container">
+          <div class="col-xs-4"><em>total dice</em></div>
+          <div class="col-xs-2">{{dice.length}}</div>
+
+          <div class="col-xs-4"><em>sum</em></div>
+          <div class="col-xs-2">{{sum}}</div>
+        </div>
+        <div class="row text-left">
+          <div class="col-xs-4"><em>highest</em></div>
+          <div class="col-xs-2">{{highest}}</div>
+
+          <div class="col-xs-4"><em>lowest</em></div>
+          <div class="col-xs-2">{{lowest}}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4 col-md-2 dice-wrapper" ng-repeat="die in dice">
+            <dice die="die" hm-swipe="removeDice(dice.indexOf(die))"></dice>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container actions-container">
+      <div class="actions-wrapper" ng-show="showActions">
+        <div class="row">
+          <div class="col-xs 12 pull-right">
+            <button type="button" class="btn btn-sm btn-danger" ng-click="removeAllDice()">Remove all</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs 12 pull-right">
+            <form class="add-multi-dice-form" name="addMultiDiceForm" ng-submit="addMultiDiceForm.$valid && addMultiDice(multiDice.number, multiDice.sides)" novalidate>
+              <input type="number" class="add-dice-number" min="1" ng-model="multiDice.number" pattern="\d*" placeholder="number" required>
+              <input type="number" class="add-dice-sides" min="2" ng-model="multiDice.sides" pattern="\d*" placeholder="sides" required>
+              <button type="submit" class="btn btn-sm btn-info pull-right">Add multiple</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs 12 pull-right">
+            <form class="add-single-dice-form" name="addSingleDiceForm" ng-submit="addSingleDiceForm.$valid && addSingleDice(singleDice.sides)" novalidate>
+              <input type="number" class="add-dice-sides" min="2" ng-model="singleDice.sides" pattern="\d*" placeholder="sides" required>
+              <button type="submit" class="btn btn-sm btn-info pull-right">Add single</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs 12 pull-right">
+            <button type="button" class="btn btn-sm btn-success" ng-click="rollAll()">Roll all</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="button" class="btn show-actions" ng-click="toggleShowActions()"><i class="material-icons">mode_edit</i></button>
+        </div>
+      </div>
+    </div>
   </body>
 
 </html>
